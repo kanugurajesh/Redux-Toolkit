@@ -1,7 +1,7 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { useAppDispatch, useAppSelector } from './app/hooks'
-import { increment } from './features/counter/counterSlice'
+import { increment, decrement } from './features/counter/counterSlice'
 import './App.css'
 
 function App() {
@@ -10,8 +10,12 @@ function App() {
 
   const dispatch = useAppDispatch()
 
-  const handleClick = () => {
+  const handleClickAdd = () => {
     dispatch(increment())
+  }
+
+  const handleClickSub = () => {
+    dispatch(decrement())
   }
 
   return (
@@ -26,8 +30,14 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={handleClick}>
+      <button onClick={handleClickSub}>
+          -
+        </button>
+        <button>
           count is {count}
+        </button>
+        <button onClick={handleClickAdd}>
+          +
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
